@@ -19,7 +19,7 @@ builder.Services.AddAutoMapper(typeof(BlogMapper));
 
 // Add services to the container.
 
-buider.Services.addScoped<IPostRepository, PostRepository>();
+builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
