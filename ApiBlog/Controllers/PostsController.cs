@@ -1,8 +1,7 @@
-﻿using ApiBlog.Models;
-using ApiBlog.Models.Dtos;
-using ApiBlog.Repository.IRepository;
+﻿using ApiBlog.Modelos;
+using ApiBlog.Modelos.Dtos;
+using ApiBlog.Repositorio.IRepositorio;
 using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiBlog.Controllers
@@ -12,10 +11,10 @@ namespace ApiBlog.Controllers
     public class PostsController : ControllerBase
     {
 
-        private readonly IPostRepository _postRepo;
+        private readonly IPostRepositorio _postRepo;
         private readonly IMapper _mapper;
 
-        public PostsController(IPostRepository postRepo, IMapper mapper)
+        public PostsController(IPostRepositorio postRepo, IMapper mapper)
         {
             _postRepo = postRepo;
             _mapper = mapper;
@@ -88,7 +87,7 @@ namespace ApiBlog.Controllers
                 return StatusCode(500, ModelState);
             }
 
-            return CreatedAtRoute("GetPost", new {postId = post.Id}, post);
+            return CreatedAtRoute("GetPost", new { postId = post.Id }, post);
         }
 
         [HttpPatch("{postId:int}", Name = "ActualizarPatchPost")]

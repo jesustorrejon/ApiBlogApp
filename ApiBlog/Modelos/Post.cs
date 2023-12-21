@@ -1,19 +1,20 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ApiBlog.Models.Dtos
+namespace ApiBlog.Modelos
 {
-    public class PostDto
+    public class Post
     {
+        [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "El titulo es obligatorio")]
+        [Required]
         public string Titulo { get; set; }
 
-        [Required(ErrorMessage = "La descripción es obligatoria")]
+        [Required]
         public string Descripcion { get; set; }
         public string? RutaImagen { get; set; }
 
-        [Required(ErrorMessage = "Las etiquetas son obligatorias")]
+        [Required]
         public string Etiquetas { get; set; }
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
         public DateTime FechaActualizacion { get; set; }

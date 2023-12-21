@@ -1,8 +1,8 @@
-﻿using ApiBlog.Models;
+﻿using ApiBlog.Modelos;
 
-namespace ApiBlog.Repository.IRepository
+namespace ApiBlog.Repositorio.IRepositorio
 {
-    public interface IPostRepository
+    public interface IPostRepositorio
     {
         ICollection<Post> GetPosts();
         Post GetPost(int postId);

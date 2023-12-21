@@ -1,16 +1,15 @@
 ﻿using ApiBlog.Data;
-using ApiBlog.Models;
-using ApiBlog.Repository.IRepository;
+using ApiBlog.Modelos;
+using ApiBlog.Repositorio.IRepositorio;
 using Microsoft.EntityFrameworkCore;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ApiBlog.Repository
 {
-    public class PostRepository : IPostRepository
+    public class PostRepositorio : IPostRepositorio
     {
         private readonly ApplicationDbContext _bd;
 
-        public PostRepository(ApplicationDbContext bd)
+        public PostRepositorio(ApplicationDbContext bd)
         {
             _bd = bd;
         }
@@ -52,7 +51,7 @@ namespace ApiBlog.Repository
 
         public bool Save()
         {
-            return _bd.SaveChanges() > 0? true : false;
+            return _bd.SaveChanges() > 0 ? true : false;
         }
 
         public bool UpdatePost(Post post)

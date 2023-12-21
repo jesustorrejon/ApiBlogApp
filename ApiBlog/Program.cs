@@ -1,7 +1,7 @@
 using ApiBlog.Data;
 using ApiBlog.Mappers;
 using ApiBlog.Repository;
-using ApiBlog.Repository.IRepository;
+using ApiBlog.Repositorio.IRepositorio;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,7 +19,7 @@ builder.Services.AddAutoMapper(typeof(BlogMapper));
 
 // Add services to the container.
 
-builder.Services.AddScoped<IPostRepository, PostRepository>();
+builder.Services.AddScoped<IPostRepositorio, PostRepositorio>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -34,6 +34,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

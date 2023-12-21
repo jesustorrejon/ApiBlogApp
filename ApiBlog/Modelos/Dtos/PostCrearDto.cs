@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ApiBlog.Models.Dtos
+namespace ApiBlog.Modelos.Dtos
 {
     public class PostCrearDto
     {

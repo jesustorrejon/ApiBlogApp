@@ -1,5 +1,5 @@
-﻿using ApiBlog.Models;
-using ApiBlog.Models.Dtos;
+﻿using ApiBlog.Modelos;
+using ApiBlog.Modelos.Dtos;
 using AutoMapper;
 
 namespace ApiBlog.Mappers
