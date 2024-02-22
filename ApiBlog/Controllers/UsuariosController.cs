@@ -2,6 +2,7 @@
 using ApiBlog.Modelos.Dtos;
 using ApiBlog.Repositorio.IRepositorio;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -20,9 +21,10 @@ namespace ApiBlog.Controllers
         {
             _usRepo = usRepo;
             _mapper = mapper;
+            this._respuestasApi = new();
         }
 
-        [HttpPost("Registro")]
+        [HttpPost("registro")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -74,6 +76,7 @@ namespace ApiBlog.Controllers
             return Ok(_respuestasApi);
         }
 
+        [Authorize]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -91,13 +94,14 @@ namespace ApiBlog.Controllers
             return Ok(listaUsuariosDto);
         }
 
+        [Authorize]
         [HttpGet("{usuarioId:int}", Name = "GetUsuario")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult GetPost(int usuarioId)
+        public IActionResult GetUsuario(int usuarioId)
         {
             var itemUsuario = _usRepo.GetUsuario(usuarioId);
 

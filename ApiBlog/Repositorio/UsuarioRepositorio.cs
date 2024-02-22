@@ -16,9 +16,10 @@ namespace ApiBlog.Repositorio
         private readonly ApplicationDbContext _bd;
         private string claveSecreta;
 
-        public UsuarioRepositorio(ApplicationDbContext bd)
+        public UsuarioRepositorio(ApplicationDbContext bd, IConfiguration config)
         {
             _bd = bd;
+            claveSecreta = config.GetValue<string>("ApiSettings:Secreta");
         }
 
         public Usuario GetUsuario(int usuarioId)
@@ -33,7 +34,7 @@ namespace ApiBlog.Repositorio
 
         public bool IsUniqueUser(string usuario)
         {
-            bool usuariobd = _bd.Usuario.Any(u => u.NombreUsuario == usuario);
+            var usuariobd = _bd.Usuario.FirstOrDefault(u => u.NombreUsuario == usuario);
             if (usuariobd == null)
             {
                 return true;
