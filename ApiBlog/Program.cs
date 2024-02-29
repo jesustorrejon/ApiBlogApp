@@ -19,6 +19,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConexionSql"));
 });
 
+if(!System.IO.Directory.Exists("ImagenesPosts")) System.IO.Directory.CreateDirectory("ImagenesPosts");
+
 var key = builder.Configuration.GetValue<string>("ApiSettings:Secreta");
 
 //Agregar automapper
@@ -102,6 +104,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 //Importante para habilitar que se  exponga el directorio de imagenes
 //Sin esto no se puede acceder
